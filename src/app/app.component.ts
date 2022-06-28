@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
       // @ts-ignore
       if(typeof Android != 'undefined'){
         setTimeout(()=>{
+          // @ts-ignore
           Android.completeTask();
         }, 3000);
       }
