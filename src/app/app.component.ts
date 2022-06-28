@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   username = environment.username;*/
   tipo: string;
   types = ["app", "portal", "otro"]
+  @ViewChild("tareaCompletada") h1Element: ElementRef;
 
   constructor(private route: ActivatedRoute) {
     this.route.queryParams
@@ -34,8 +35,15 @@ export class AppComponent implements OnInit {
     console.log("TERMINANDO TAREA...");
     console.log(this.tipo);
     if(this.tipo == 'app' ){
+      let h1 = this.h1Element.nativeElement.value;
+      this.h1Element.nativeElement.innerHTML = h1 + "<br/>" + "TAREA TERMINADA";
+
       // @ts-ignore
-      Android.completeTask();
+      if(typeof Android != 'undefined'){
+        setTimeout(()=>{
+          Android.completeTask();
+        }, 3000);
+      }
     }
   }
 }
