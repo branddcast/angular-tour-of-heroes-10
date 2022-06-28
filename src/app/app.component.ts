@@ -16,7 +16,6 @@ export class AppComponent implements OnInit {
   username = environment.username;*/
   tipo: string;
   types = ["app", "portal", "otro"]
-  @ViewChild("tareaCompletada") h1Element: ElementRef;
 
   constructor(private route: ActivatedRoute) {
     this.route.queryParams
@@ -35,8 +34,10 @@ export class AppComponent implements OnInit {
     console.log("TERMINANDO TAREA...");
     console.log(this.tipo);
     if(this.tipo == 'app' ){
-      let h1 = this.h1Element.nativeElement.value;
-      this.h1Element.nativeElement.innerHTML = h1 + "<br/>" + "TAREA TERMINADA";
+
+      //Ex:
+      let h1 = document.getElementById('tareaCompletada');
+      h1.innerHTML = h1.innerHTML + "<br/>" + "TAREA TERMINADA";
 
       // @ts-ignore
       if(typeof Android != 'undefined'){
