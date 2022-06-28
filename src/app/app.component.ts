@@ -14,26 +14,28 @@ export class AppComponent implements OnInit {
   env = environment.env;
   user = environment.user;
   username = environment.username;*/
-  embebido: Boolean = false;
+  tipo: Boolean = false;
+  types = ["app", "portal", "otro"]
 
   constructor(private route: ActivatedRoute) {
+    this.route.queryParams
+      .subscribe(params => {
+        this.tipo = params.type || "app";
+      }
+    );
   }
 
   ngOnInit() {
-    this.route.queryParams
-      .subscribe(params => {
-        this.embebido = JSON.parse(typeof params.embedded !== 'undefined' ? params.embedded : 'false');
-      }
-    );
+    
   }
 
 
   finish(){
     console.log("TERMINANDO TAREA...");
-    console.log(this.embebido);
-    if(this.embebido){
+    console.log(this.tipo);
+    if(this.tipo == 'app' ){
       // @ts-ignore
-      completeTask();
+      Android.completeTask();
     }
   }
 }
