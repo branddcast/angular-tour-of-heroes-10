@@ -41,6 +41,8 @@ export class AppComponent implements OnInit {
 
       // @ts-ignore
       if(typeof Android != 'undefined'){
+        // @ts-ignore
+        Android.showToast("Redireccionando...");
         setTimeout(()=>{
           // @ts-ignore
           Android.completeTask();
