@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   env = environment.env;
   user = environment.user;
   username = environment.username;*/
-  tipo: Boolean = false;
+  tipo: String;
   types = ["app", "portal", "otro"]
 
   constructor(private route: ActivatedRoute) {
