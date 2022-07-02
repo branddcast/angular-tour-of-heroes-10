@@ -39,15 +39,13 @@ export class AppComponent implements OnInit {
       let h1 = document.getElementById('tareaCompletada');
       h1.innerHTML = h1.innerHTML + "<br/>" + "TAREA TERMINADA";
 
-      // @ts-ignore
-      if(typeof Android != 'undefined'){
         // @ts-ignore
-        Android.showToast("Redireccionando...");
+        ShowToast.postMessage("Redireccionando...");
         setTimeout(()=>{
           // @ts-ignore
-          Android.completeTask();
+          completeTask.postMessage('');
         }, 3000);
-      }
+      
     }
   }
 }
