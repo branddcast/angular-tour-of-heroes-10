@@ -39,11 +39,12 @@ export class AppComponent implements OnInit {
       let h1 = document.getElementById('tareaCompletada');
       h1.innerHTML = h1.innerHTML + "<br/>" + "TAREA TERMINADA";
 
-        // @ts-ignore
-        ShowToast.postMessage("Redireccionando...");
+        const showToast = (msg: string) => window.flutter_inappwebview.callHandler('showToast', {msg: msg});
+        const completeTask = () => window.flutter_inappwebview.callHandler('completeTask', []);
+
+        showToast("Redireccionando...");
         setTimeout(()=>{
-          // @ts-ignore
-          completeTask.postMessage('');
+          completeTask();
         }, 3000);
       
     }
